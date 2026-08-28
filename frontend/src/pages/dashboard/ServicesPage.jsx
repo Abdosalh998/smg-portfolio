@@ -19,7 +19,7 @@ import { ICON_LIST, getIconComp } from '../../constants/whyChooseUsIcons';
 import serviceService from '../../services/service.service';
 import './ServicesPage.css';
 
-const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+import BASE_URL from '../../utils/baseUrl';
 
 // ── Icon Picker ──────────────────────────────────────────────────────────────
 const IconPicker = ({ value, onChange }) => (

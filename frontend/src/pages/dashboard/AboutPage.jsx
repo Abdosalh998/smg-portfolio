@@ -9,6 +9,7 @@ import StarterKit from '@tiptap/starter-kit';
 import TextAlign from '@tiptap/extension-text-align';
 
 import aboutService from '../../services/about.service';
+import BASE_URL from '../../utils/baseUrl';
 import './AboutPage.css';
 
 const TiptapEditor = ({ value, onChange }) => {
@@ -127,9 +128,7 @@ const AboutPage = () => {
         arabicDescription:  data.data.arabicDescription  || '',
       });
       if (data.data.image) {
-        // Prepend backend URL in production, or localhost in dev
-        const baseUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
-        setImagePreview(`${baseUrl}${data.data.image}`);
+        setImagePreview(`${BASE_URL}${data.data.image}`);
       }
     }
   }, [data, reset]);
@@ -196,8 +195,7 @@ const AboutPage = () => {
     if (selectedFile) {
       // Just clear selection if it's not saved yet
       setSelectedFile(null);
-      const baseUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
-      setImagePreview(data?.data?.image ? `${baseUrl}${data.data.image}` : null);
+      setImagePreview(data?.data?.image ? `${BASE_URL}${data.data.image}` : null);
       if (fileInputRef.current) fileInputRef.current.value = '';
     } else if (data?.data?.image) {
       // Delete from backend

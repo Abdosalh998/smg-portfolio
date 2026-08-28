@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { ArrowLeft, ArrowRight, Wind } from 'lucide-react';
 import DOMPurify from 'dompurify';
 import aboutService from '../../services/about.service';
+import BASE_URL from '../../utils/baseUrl';
 import './AboutSection.css';
 
 const fadeLeft  = (delay = 0) => ({ hidden: { opacity: 0, x: -40 }, show: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut', delay } } });
@@ -18,8 +19,7 @@ const AboutSection = ({ lang }) => {
   const t = (ar, en) => (lang === 'ar' ? ar : en);
   const ArrowIcon = lang === 'ar' ? ArrowLeft : ArrowRight;
 
-  const baseUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
-  const imageUrl = about?.image ? `${baseUrl}${about.image}` : null;
+  const imageUrl = about?.image ? `${BASE_URL}${about.image}` : null;
 
   const sanitize = (html) => ({ __html: DOMPurify.sanitize(html || '') });
 

@@ -17,9 +17,8 @@ import {
 } from 'lucide-react';
 
 import galleryService from '../../services/gallery.service';
+import BASE_URL from '../../utils/baseUrl';
 import './GalleryPage.css';
-
-const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
 
 const SortableGalleryItem = ({ item, lang, onEdit, onDelete, onToggle, onReplaceImage }) => {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =

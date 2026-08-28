@@ -5,7 +5,7 @@ import { getIconComp } from '../../constants/whyChooseUsIcons';
 import applicationService from '../../services/application.service';
 import './ApplicationsSection.css';
 
-const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+import BASE_URL from '../../utils/baseUrl';
 
 const cardVariants = {
   hidden: { opacity: 0, scale: 0.95, y: 30 },

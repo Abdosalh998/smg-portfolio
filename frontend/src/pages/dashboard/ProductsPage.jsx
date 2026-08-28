@@ -19,7 +19,7 @@ import {
 import productService from '../../services/product.service';
 import './ProductsPage.css';
 
-const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+import BASE_URL from '../../utils/baseUrl';
 
 const SortableRow = ({ item, lang, onEdit, onDelete, onToggle }) => {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
