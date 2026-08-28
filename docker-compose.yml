@@ -14,7 +14,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: smg_backend
+    container_name: smg_backend_api
     environment:
       - NODE_ENV=production
       - PORT=5000
@@ -37,7 +37,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: smg_frontend
+    container_name: smg_frontend_web
     ports:
       # Expose the 'serve' static server port to the host
       - "3000:3000"
