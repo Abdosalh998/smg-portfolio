@@ -20,7 +20,7 @@ RUN npm run build
 RUN npm install -g serve
 
 # Expose HTTP port for the static server
-EXPOSE 3000
+EXPOSE 3001
 
-# Start the application using 'serve' on port 3000, routing all requests to index.html (-s)
-CMD ["serve", "-s", "dist", "-l", "3000"]
+# Start the application using 'serve' on port 3001, routing all requests to index.html (-s)
+CMD ["serve", "-s", "dist", "-l", "3001"]

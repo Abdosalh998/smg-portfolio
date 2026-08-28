@@ -26,7 +26,7 @@ services:
       - FRONTEND_URL=https://portfolio.smgturbofan.com
     ports:
       # Optional: expose 5000 to host for direct API access if needed
-      - "5000:5000"
+      - "5001:5001"
     volumes:
       - smg_uploads:/app/uploads
     depends_on:
@@ -40,7 +40,7 @@ services:
     container_name: smg_frontend_web
     ports:
       # Expose the 'serve' static server port to the host
-      - "3000:3000"
+      - "3001:3001"
     depends_on:
       - backend
     restart: unless-stopped
