@@ -5,7 +5,7 @@ import settingsService from '../../services/settings.service';
 import contactInfoService from '../../services/contactInfo.service';
 import './Footer.css';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = import.meta.env.VITE_API_URL?.replace('/api', '') || '';
 
 const Footer = ({ lang }) => {
   const isAr = lang === 'ar';

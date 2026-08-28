@@ -7,6 +7,8 @@ import { Settings, Globe, Search, Palette, Activity, Upload, Image as ImageIcon 
 import settingsService from '../../services/settings.service';
 import './SettingsPage.css';
 
+const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || '';
+
 const SettingsPage = () => {
   const { lang } = useOutletContext();
   const t = (ar, en) => lang === 'ar' ? ar : en;
@@ -166,7 +168,7 @@ const SettingsPage = () => {
                 <div className="branding-item">
                   <div className="branding-preview">
                     {settingsData?.logo ? (
-                      <img src={`http://localhost:5000${settingsData.logo}`} alt="Logo" className="preview-img" />
+                      <img src={`${BASE_URL}${settingsData.logo}`} alt="Logo" className="preview-img" />
                     ) : (
                       <ImageIcon size={32} color="var(--text-muted)" />
                     )}
@@ -183,7 +185,7 @@ const SettingsPage = () => {
                 <div className="branding-item">
                   <div className="branding-preview favicon-preview">
                     {settingsData?.favicon ? (
-                      <img src={`http://localhost:5000${settingsData.favicon}`} alt="Favicon" className="preview-img" />
+                      <img src={`${BASE_URL}${settingsData.favicon}`} alt="Favicon" className="preview-img" />
                     ) : (
                       <ImageIcon size={24} color="var(--text-muted)" />
                     )}
