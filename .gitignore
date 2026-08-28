@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Environment Variables
+.env
+.env.local
+*.env
+
+# Build Output
+dist/
+build/
+frontend/dist/
+
+# Uploads / Data
+uploads/
+backend/uploads/
+mongo_data/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
