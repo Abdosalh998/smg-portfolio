@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mongo:
     image: mongo:6.0
-    container_name: smg_mongo
+    container_name: smg_mongo_db
     ports:
       - "27018:27017"
     volumes:
