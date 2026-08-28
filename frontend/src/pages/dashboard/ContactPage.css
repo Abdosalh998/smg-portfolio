@@ -1,0 +1,74 @@
+/* ── Layout ───────────────────────────────────────────────────────────── */
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ── Form Grid ────────────────────────────────────────────────────────── */
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.contact-form-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.contact-form-section-title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Phone list */
+.phone-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.phone-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.phone-row .form-input {
+  flex: 1;
+}
+
+/* Social links */
+.social-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+/* Save actions */
+.contact-save-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--space-4) var(--space-6);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+}
+
+@media (max-width: 1024px) {
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

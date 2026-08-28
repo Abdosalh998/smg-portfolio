@@ -1,0 +1,159 @@
+.wcu-section { }
+
+/* ── Section Head ── */
+.wcu-head {
+  text-align: center;
+  margin-bottom: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.wcu-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.wcu-subtitle {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ── Cards Grid ── */
+.wcu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-5);
+}
+
+/* ── Feature Card ── */
+.wcu-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6) var(--space-5) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* icon sticks to reading-start */
+  gap: var(--space-3);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  cursor: default;
+  min-height: 160px;
+}
+
+.wcu-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.03) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.wcu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(230, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.06);
+  border-color: rgba(230, 0, 0, 0.25);
+}
+.wcu-card:hover::before { opacity: 1; }
+
+/* Icon */
+.wcu-card-icon-wrap {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.1), rgba(230, 0, 0, 0.05));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-500);
+  transition: background var(--transition-base), transform var(--transition-base);
+  flex-shrink: 0;
+}
+.wcu-card:hover .wcu-card-icon-wrap {
+  background: linear-gradient(135deg, var(--accent-500), var(--accent-600));
+  color: #fff;
+  transform: scale(1.1) rotate(-4deg);
+}
+
+/* Text */
+.wcu-card-title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  width: 100%;          /* fill card width for RTL text-align to work */
+}
+
+.wcu-card-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+  width: 100%;
+}
+
+/* Decorative corner accent */
+.wcu-card-corner {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--accent-500) 0%, transparent 60%);
+  border-bottom-left-radius: var(--radius-xl);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+[dir="ltr"] .wcu-card-corner {
+  right: auto;
+  left: -1px;
+  background: linear-gradient(225deg, var(--accent-500) 0%, transparent 60%);
+  border-bottom-right-radius: var(--radius-xl);
+  border-bottom-left-radius: 0;
+}
+.wcu-card:hover .wcu-card-corner { opacity: 1; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .wcu-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 640px) {
+  .wcu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+  .wcu-card {
+    padding: var(--space-4) var(--space-4) var(--space-4);
+    min-height: 130px;
+  }
+  .wcu-card-icon-wrap {
+    width: 44px;
+    height: 44px;
+  }
+  .wcu-card-title {
+    font-size: var(--text-sm);
+  }
+  .wcu-head {
+    margin-bottom: var(--space-8);
+  }
+}
+
+@media (max-width: 380px) {
+  .wcu-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+  .wcu-card-desc { display: none; }  /* too tight on very small phones */
+}

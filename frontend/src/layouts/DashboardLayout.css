@@ -1,0 +1,58 @@
+/* ── DashboardLayout.css ─────────────────────────────────────── */
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-base);
+  position: relative;
+}
+
+/* Main area sits to the left of the RTL sidebar (right side)
+   or to the right of the LTR sidebar (left side).
+   We drive the offset with a CSS var that equals sidebar-width
+   when open, and 0 when closed. */
+.dashboard-main {
+  flex: 1;
+  min-width: 0;            /* prevent overflow */
+  margin-top: var(--navbar-height);
+  /* RTL: sidebar is on the RIGHT  → push content away from the right */
+  margin-right: 0;
+  margin-left: 0;
+  transition: margin var(--transition-slow);
+}
+
+/* ── RTL open ────────────────────────────────────────────────── */
+[dir="rtl"] .dashboard-layout.sidebar-is-open .dashboard-main {
+  margin-right: var(--sidebar-width);
+}
+
+/* ── LTR open ────────────────────────────────────────────────── */
+[dir="ltr"] .dashboard-layout.sidebar-is-open .dashboard-main {
+  margin-left: var(--sidebar-width);
+}
+
+.dashboard-content {
+  padding: var(--space-8);
+  max-width: var(--content-max-width);
+  width: 100%;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* On mobile the sidebar floats above content – no margin shift */
+  [dir="rtl"] .dashboard-layout.sidebar-is-open .dashboard-main,
+  [dir="ltr"] .dashboard-layout.sidebar-is-open .dashboard-main {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .dashboard-content {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-content {
+    padding: var(--space-3);
+  }
+}

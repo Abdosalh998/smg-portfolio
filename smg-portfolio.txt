@@ -1,0 +1,2054 @@
+# Prompt 0 — Project Overview
+
+## Project Name
+
+SMG Turbo Fan Landing Page
+
+---
+
+## Project Goal
+
+Develop a premium, modern, responsive Landing Page for **S.M.G. Turbo Fan Central Ventilation Systems**.
+
+The website represents a company specialized in Central Ventilation Systems, HVAC Solutions, Industrial Fans, Air Handling, Manufacturing, Installation, and Maintenance.
+
+This project is not just a landing page; it should serve as a professional digital presence that highlights the company's services, products, previous work, and allows visitors to contact the company easily.
+
+---
+
+## Design Inspiration
+
+The design philosophy should be inspired by the following website:
+
+https://smgturbofan.com/
+
+Do **NOT** copy the website.
+
+Instead, create a new implementation that follows the same overall feeling regarding:
+
+* Professional industrial appearance
+* Corporate color palette
+* Modern typography
+* Premium spacing
+* Hero section style
+* Smooth animations
+* Scroll animations
+* Hover effects
+* Image presentation
+* Cards layout
+* CTA sections
+* Responsive behavior
+* Modern UI/UX
+
+The final website should feel premium and trustworthy.
+
+---
+
+## Technology Stack
+
+### Frontend
+
+* React.js
+* React Router
+* Responsive Design
+* Mobile First
+* Lazy Loading
+* SEO Friendly
+* Reusable Components
+
+### Backend
+
+* Node.js
+* Express.js
+* REST API
+* JWT Authentication
+
+### Database
+
+MongoDB running as a Docker Image.
+
+### Reverse Proxy
+
+Nginx
+
+---
+
+## Project Architecture
+
+The project consists of two major applications.
+
+### 1. Landing Page
+
+Visible to visitors.
+
+Contains all public sections.
+
+All displayed data must be loaded dynamically from the backend APIs.
+
+No hardcoded data except the initial seed.
+
+---
+
+### 2. Admin Dashboard
+
+Accessible only after authentication.
+
+The dashboard is responsible for managing every part of the Landing Page.
+
+Everything visible on the website must be editable from the Dashboard.
+
+---
+
+## Dashboard Responsibilities
+
+The Dashboard will manage:
+
+* About Us
+* Why Choose Us
+* Services
+* Applications
+* Products
+* Gallery
+* Contact Information
+* Inbox
+* Footer
+* Website Settings
+
+Every module should support full CRUD operations.
+
+---
+
+## Dynamic Content
+
+No section should contain static content.
+
+Everything should come from MongoDB through REST APIs.
+
+The backend should seed the database with the initial data only on first deployment.
+
+After that, the Dashboard becomes the only source for managing website content.
+
+---
+
+## Contact System
+
+The Contact Form must send submissions to the backend.
+
+Every submitted message should automatically appear inside a dedicated **Inbox** module in the Dashboard.
+
+---
+
+## Security
+
+Use JWT Authentication.
+
+Protect every Dashboard API.
+
+Validate all incoming requests.
+
+Secure file uploads.
+
+---
+
+## Performance
+
+The project should be production-ready and optimized for:
+
+* Performance
+* SEO
+* Security
+* Scalability
+* Clean Architecture
+* Reusable Components
+
+---
+
+## Development Rules
+
+While building every module:
+
+* Follow Clean Code principles.
+* Use reusable React components.
+* Separate frontend and backend concerns.
+* Keep APIs RESTful.
+* Handle loading and error states.
+* Write scalable and maintainable code.
+* Use consistent naming conventions.
+* Keep the UI responsive across all devices.
+* Ensure every feature is fully connected between Frontend, Backend, and MongoDB.
+
+This overview defines the complete vision of the project. All upcoming prompts will describe each module independently and should follow these architectural and development rules.
+
+-----------------------------------------------------------------------
+
+# Prompt 1 — Authentication & Admin Dashboard
+
+## Objective
+
+Build a secure and modern Admin Dashboard that serves as the control center for the entire SMG Turbo Fan Landing Page.
+
+Only authenticated administrators can access the dashboard.
+
+The dashboard will manage every piece of content displayed on the Landing Page.
+
+---
+
+# Technology
+
+Frontend
+
+* React.js
+* React Router
+* Axios
+* Context API or Redux
+* Responsive UI
+
+Backend
+
+* Node.js
+* Express.js
+* JWT Authentication
+* bcrypt Password Hashing
+
+Database
+
+* MongoDB
+
+---
+
+# Authentication
+
+Create a Login Page.
+
+Fields:
+
+* Username or Email
+* Password
+
+Validation:
+
+* Required Fields
+* Invalid Credentials Message
+* Loading State
+
+After successful login:
+
+* Generate JWT Token
+* Store Token securely
+* Redirect to Dashboard
+
+Protected Routes:
+
+All Dashboard pages require authentication.
+
+Unauthenticated users must be redirected to Login.
+
+---
+
+# Dashboard Layout
+
+Create a professional dashboard layout.
+
+Layout includes:
+
+Top Navbar
+
+Contains:
+
+* Company Logo
+* Logged User
+* Logout Button
+
+Left Sidebar
+
+Contains:
+
+* Dashboard
+* About Us
+* Why Choose Us
+* Services
+* Applications
+* Products
+* Gallery
+* Contact Information
+* Inbox
+* Footer
+* Website Settings
+
+Main Content Area
+
+Displays module pages.
+
+---
+
+# Dashboard Home
+
+Create statistics cards.
+
+Show:
+
+* Total Products
+* Total Gallery Images
+* Total Services
+* Total Applications
+* Total Inbox Messages
+* Total Unread Messages
+
+Recent Activity section.
+
+Recent Inbox Messages.
+
+Quick Navigation Cards.
+
+---
+
+# Dashboard Features
+
+Every module should support:
+
+Create
+
+Read
+
+Update
+
+Delete
+
+Search
+
+Pagination
+
+Loading States
+
+Error Handling
+
+Success Notifications
+
+Confirmation Dialog before Delete
+
+---
+
+# API Structure
+
+POST
+
+/auth/login
+
+POST
+
+/auth/logout
+
+GET
+
+/auth/profile
+
+Middleware:
+
+JWT Authentication
+
+Authorization
+
+Validation
+
+---
+
+# MongoDB Collection
+
+users
+
+Fields:
+
+* username
+* email
+* password (hashed)
+* role
+* createdAt
+* updatedAt
+
+---
+
+# UI Requirements
+
+Modern Dashboard
+
+Responsive
+
+Smooth Animations
+
+Professional Cards
+
+Material Icons or Lucide Icons
+
+Clean Sidebar
+
+Sticky Navbar
+
+Professional Tables
+
+Professional Forms
+
+Beautiful Empty States
+
+Loading Skeletons
+
+Toast Notifications
+
+---
+
+# Acceptance Criteria
+
+The dashboard must be fully functional, secure, scalable, and production-ready. Every future module should integrate seamlessly with this dashboard.
+
+--------------------------------------------------------------------
+
+# Prompt 2 — About Us Module
+
+## Objective
+
+Build the "About Us" section for both the Landing Page and the Admin Dashboard.
+
+This section introduces the company and is fully editable from the Dashboard.
+
+No hardcoded data should be used after the initial database seed.
+
+---
+
+# Landing Page
+
+Create a modern About Us section.
+
+Initially display:
+
+Arabic Title
+
+الاسم الرسمي لأنظمة التهوية المركزية
+
+Company Name
+
+S.M.G Turbo Fan
+
+English Name
+
+S.M.G. Turbo Fan Central Ventilation Systems
+
+Description
+
+Create a professional paragraph describing the company as a leading provider of Central Ventilation Systems, Industrial Fans, HVAC Solutions, Manufacturing, Installation, Maintenance, and Engineering Services.
+
+Include:
+
+* Company Image
+* Smooth Scroll Animation
+* Professional Layout
+* Responsive Design
+* CTA Button
+
+---
+
+# Dashboard
+
+Create an About Us management page.
+
+Administrator can:
+
+Edit Arabic Title
+
+Edit Company Name
+
+Edit English Name
+
+Edit Description
+
+Upload Company Image
+
+Replace Image
+
+Delete Image
+
+Preview Changes
+
+Save Changes
+
+---
+
+# Image Upload
+
+Allow:
+
+JPG
+
+PNG
+
+WEBP
+
+Maximum size:
+
+5 MB
+
+Automatically optimize uploaded images.
+
+---
+
+# MongoDB Collection
+
+about
+
+Fields:
+
+* arabicTitle
+* companyName
+* englishName
+* description
+* image
+* updatedAt
+
+---
+
+# APIs
+
+GET
+
+/about
+
+PUT
+
+/about
+
+POST
+
+/about/upload-image
+
+DELETE
+
+/about/image
+
+---
+
+# Validation
+
+All text fields required.
+
+Image validation.
+
+Maximum character limits.
+
+Server-side validation.
+
+---
+
+# Frontend Requirements
+
+Loading Spinner
+
+Skeleton Loader
+
+Toast Messages
+
+Image Preview
+
+Responsive Form
+
+Rich Text Area for Description
+
+---
+
+# Landing Page Behavior
+
+Load all data dynamically from the backend.
+
+Display loading state while fetching data.
+
+Display graceful fallback if data is unavailable.
+
+Animate the section when it enters the viewport.
+
+---
+
+# Acceptance Criteria
+
+The About Us section must be fully manageable from the Dashboard. Any changes made by the administrator should instantly appear on the Landing Page without requiring code modifications.
+
+----------------------------------------------------------
+
+# Prompt 3 — Why Choose Us Module
+
+## Objective
+
+Build a fully dynamic **Why Choose Us** section that highlights the company's competitive advantages. All content must be managed through the Admin Dashboard with complete CRUD functionality.
+
+---
+
+# Landing Page
+
+Create a modern section titled:
+
+## لماذا تختارنا
+
+Initially display the following points:
+
+* جودة التصنيع
+* أسعار منافسة
+* سرعة التوريد
+* تصنيع حسب الطلب
+* خبرة فنية
+* ضمان
+* خدمة ما بعد البيع
+* تركيب وصيانة
+
+Display the points as modern feature cards with:
+
+* Icon
+* Title
+* Short Description (Optional)
+* Hover Animation
+* Scroll Reveal Animation
+
+Cards should be responsive and arranged in a clean grid layout.
+
+---
+
+# Dashboard
+
+Create a "Why Choose Us" management page.
+
+Administrator can:
+
+* Add New Point
+* Edit Existing Point
+* Delete Point
+* Change Display Order (Drag & Drop)
+* Enable / Disable Point
+* Change Icon
+* Add Optional Description
+
+---
+
+# Card Fields
+
+Each item contains:
+
+* Title
+* Description (Optional)
+* Icon
+* Display Order
+* Active Status
+
+---
+
+# MongoDB Collection
+
+why_choose_us
+
+Fields:
+
+* title
+* description
+* icon
+* order
+* isActive
+* createdAt
+* updatedAt
+
+---
+
+# APIs
+
+GET /why-choose-us
+
+POST /why-choose-us
+
+PUT /why-choose-us/:id
+
+DELETE /why-choose-us/:id
+
+PATCH /why-choose-us/reorder
+
+PATCH /why-choose-us/status/:id
+
+---
+
+# Validation
+
+* Title Required
+* Maximum Length Validation
+* Icon Required
+* Server-side Validation
+
+---
+
+# Frontend Requirements
+
+* Modern Cards
+* Hover Effects
+* Scroll Animations
+* Loading Skeleton
+* Empty State
+* Responsive Layout
+
+---
+
+# Acceptance Criteria
+
+The section must load dynamically from MongoDB and reflect Dashboard updates immediately without changing the frontend code.
+
+--------------------------------------------------------------------
+
+# Prompt 4 — Services Module
+
+## Objective
+
+Develop a fully dynamic **Services** section where all services are managed from the Admin Dashboard.
+
+---
+
+# Landing Page
+
+Create a section titled:
+
+## الخدمات
+
+Initially display:
+
+* تصميم أنظمة التهوية
+* حسابات Air Changes
+* اختيار البلاور المناسب
+* التصنيع حسب الطلب
+* التوريد
+* التركيب
+* التشغيل والاختبار
+* الصيانة
+* معاينة الموقع
+* استخراج عروض الأسعار
+
+Each service should appear as a modern service card.
+
+Each card includes:
+
+* Service Icon
+* Service Name
+* Short Description
+* CTA Button (Optional)
+
+Use premium hover effects and scroll animations.
+
+---
+
+# Dashboard
+
+Create a Services Management page.
+
+Administrator can:
+
+* Add Service
+* Edit Service
+* Delete Service
+* Upload Icon/Image
+* Enable / Disable
+* Reorder Services (Drag & Drop)
+
+---
+
+# Service Fields
+
+Each service includes:
+
+* Name
+* Description
+* Icon or Image
+* Display Order
+* Active Status
+
+---
+
+# MongoDB Collection
+
+services
+
+Fields:
+
+* name
+* description
+* icon
+* order
+* isActive
+* createdAt
+* updatedAt
+
+---
+
+# APIs
+
+GET /services
+
+POST /services
+
+PUT /services/:id
+
+DELETE /services/:id
+
+PATCH /services/reorder
+
+PATCH /services/status/:id
+
+---
+
+# Validation
+
+* Service Name Required
+* Description Optional
+* Image Validation
+* Server-side Validation
+
+---
+
+# Frontend Requirements
+
+* Responsive Cards
+* Smooth Animations
+* Skeleton Loading
+* Toast Notifications
+* Empty State
+* Lazy Loaded Images
+
+---
+
+# Landing Page Behavior
+
+Load services dynamically from the backend.
+
+Display only active services.
+
+Sort by Display Order.
+
+Animate cards when they enter the viewport.
+
+---
+
+# Acceptance Criteria
+
+The Services section should be fully dynamic, editable through the Dashboard, optimized for performance, and production-ready.
+
+----------------------------------------------------
+
+# Prompt 5 — Applications Module
+
+## Objective
+
+Develop a fully dynamic **Applications** section to showcase where SMG Turbo Fan products and ventilation systems are used. All content must be managed through the Admin Dashboard.
+
+---
+
+# Landing Page
+
+Create a section titled:
+
+## التطبيقات
+
+Initially display:
+
+* المطاعم والمطابخ
+* المصانع
+* الورش
+* المخازن
+* المولات
+* المستشفيات
+* المدارس
+* الجراجات
+* المباني الإدارية
+* المطابخ المركزية
+
+Display the applications in a modern responsive grid.
+
+Each card should contain:
+
+* Image or Icon
+* Application Name
+* Optional Short Description
+
+Use premium hover effects and smooth scroll animations.
+
+---
+
+# Dashboard
+
+Create an Applications Management page.
+
+Administrator can:
+
+* Add New Application
+* Edit Application
+* Delete Application
+* Upload Image
+* Change Icon
+* Enable / Disable
+* Reorder Applications using Drag & Drop
+
+---
+
+# Application Fields
+
+Each application contains:
+
+* Name
+* Description (Optional)
+* Image
+* Icon (Optional)
+* Display Order
+* Active Status
+
+---
+
+# Image Upload
+
+Support:
+
+* JPG
+* PNG
+* WEBP
+
+Maximum Size:
+
+5 MB
+
+Automatically optimize uploaded images.
+
+---
+
+# MongoDB Collection
+
+applications
+
+Fields:
+
+* name
+* description
+* image
+* icon
+* order
+* isActive
+* createdAt
+* updatedAt
+
+---
+
+# APIs
+
+GET /applications
+
+POST /applications
+
+PUT /applications/:id
+
+DELETE /applications/:id
+
+PATCH /applications/reorder
+
+PATCH /applications/status/:id
+
+---
+
+# Validation
+
+* Name Required
+* Image Validation
+* Maximum Character Limits
+* Server-side Validation
+
+---
+
+# Frontend Requirements
+
+* Responsive Grid
+* Lazy Loaded Images
+* Loading Skeleton
+* Smooth Hover Effects
+* Scroll Reveal Animations
+* Empty State
+* Error State
+
+---
+
+# Landing Page Behavior
+
+Load applications dynamically from MongoDB.
+
+Only display active items.
+
+Sort by Display Order.
+
+Animate every card as it enters the viewport.
+
+---
+
+# Acceptance Criteria
+
+The Applications section must be fully editable from the Dashboard, responsive across all devices, optimized for performance, and require no frontend code changes when content is updated.
+
+-------------------------------------------------
+
+# Prompt 6 — Products Module
+
+## Objective
+
+Develop a complete Products Management System that allows the administrator to manage all products from the Dashboard while displaying them dynamically on the Landing Page.
+
+---
+
+# Landing Page
+
+Create a premium section titled:
+
+## المنتجات
+
+This section should NOT contain hardcoded products.
+
+All products must be loaded dynamically from the backend.
+
+Display products as professional product cards.
+
+Each product card includes:
+
+* Product Image
+* Product Name
+* Short Description
+* Category
+* "View Details" Button
+
+Clicking "View Details" should open a modern modal or dedicated product details page.
+
+---
+
+# Product Details
+
+Each product should support:
+
+* Product Name
+* Main Image
+* Multiple Gallery Images
+* Full Description
+* Technical Specifications
+* Category
+* Features
+* Available Sizes (Optional)
+* PDF Datasheet (Optional)
+* Download Datasheet Button
+
+---
+
+# Dashboard
+
+Create a Products Management page.
+
+Administrator can:
+
+* Add Product
+* Edit Product
+* Delete Product
+* Upload Main Image
+* Upload Multiple Gallery Images
+* Upload PDF Datasheet
+* Change Display Order
+* Enable / Disable Product
+* Search Products
+* Filter by Category
+
+---
+
+# Product Fields
+
+Each product contains:
+
+* Name
+* Category
+* Short Description
+* Full Description
+* Main Image
+* Gallery Images
+* Technical Specifications
+* Features
+* PDF Datasheet
+* Display Order
+* Active Status
+
+---
+
+# Image Upload
+
+Support:
+
+* JPG
+* PNG
+* WEBP
+
+Maximum Size:
+
+5 MB
+
+Automatically optimize uploaded images.
+
+---
+
+# PDF Upload
+
+Support:
+
+* PDF only
+
+Maximum Size:
+
+20 MB
+
+---
+
+# MongoDB Collection
+
+products
+
+Fields:
+
+* name
+* category
+* shortDescription
+* fullDescription
+* specifications
+* features
+* mainImage
+* galleryImages
+* datasheet
+* order
+* isActive
+* createdAt
+* updatedAt
+
+---
+
+# APIs
+
+GET /products
+
+GET /products/:id
+
+POST /products
+
+PUT /products/:id
+
+DELETE /products/:id
+
+PATCH /products/reorder
+
+PATCH /products/status/:id
+
+POST /products/upload-image
+
+POST /products/upload-gallery
+
+POST /products/upload-datasheet
+
+---
+
+# Validation
+
+* Product Name Required
+* Category Required
+* Main Image Required
+* File Type Validation
+* Maximum File Size Validation
+* Server-side Validation
+
+---
+
+# Frontend Requirements
+
+* Product Grid
+* Product Modal or Details Page
+* Image Gallery Slider
+* Image Zoom
+* Skeleton Loading
+* Lazy Loading
+* Responsive Design
+* Smooth Animations
+* Empty State
+* Error Handling
+
+---
+
+# Landing Page Behavior
+
+Load products dynamically from MongoDB.
+
+Display only active products.
+
+Sort by Display Order.
+
+Allow users to view complete product information without leaving the site (modal) or through a dedicated product page.
+
+---
+
+# Acceptance Criteria
+
+The Products module should function as a complete CMS for product management, allowing administrators to update products, images, specifications, and documents without modifying the frontend code. It must be production-ready, scalable, and optimized for performance.
+
+-------------------------------------------------
+
+# Prompt 7 — Previous Projects Gallery Module
+
+## Objective
+
+Develop a fully dynamic **Previous Projects Gallery** module that showcases SMG Turbo Fan's completed projects. All gallery content must be managed from the Admin Dashboard.
+
+---
+
+# Landing Page
+
+Create a premium section titled:
+
+## صور من الأعمال السابقة
+
+Display projects in a modern masonry/grid layout.
+
+Each gallery item should contain:
+
+* High Quality Image
+* Project Title (Optional)
+* Project Location (Optional)
+* Short Description (Optional)
+
+When a visitor clicks an image:
+
+* Open a modern Lightbox
+* Display the image in full resolution
+* Allow Previous / Next navigation
+* Close with ESC or Close Button
+* Support swipe on mobile devices
+
+Apply smooth hover effects and scroll reveal animations.
+
+---
+
+# Dashboard
+
+Create a Gallery Management page.
+
+Administrator can:
+
+* Upload Images
+* Upload Multiple Images at once
+* Edit Project Information
+* Replace Image
+* Delete Image
+* Enable / Disable Image
+* Reorder Images using Drag & Drop
+* Search Gallery Items
+
+---
+
+# Gallery Fields
+
+Each gallery item contains:
+
+* Project Title
+* Project Location
+* Description
+* Image
+* Display Order
+* Active Status
+
+---
+
+# Image Upload
+
+Supported Formats:
+
+* JPG
+* PNG
+* WEBP
+
+Maximum Size:
+
+5 MB
+
+Automatically compress and optimize uploaded images.
+
+Generate thumbnails automatically.
+
+---
+
+# MongoDB Collection
+
+gallery
+
+Fields:
+
+* title
+* location
+* description
+* image
+* thumbnail
+* order
+* isActive
+* createdAt
+* updatedAt
+
+---
+
+# APIs
+
+GET /gallery
+
+GET /gallery/:id
+
+POST /gallery
+
+PUT /gallery/:id
+
+DELETE /gallery/:id
+
+PATCH /gallery/reorder
+
+PATCH /gallery/status/:id
+
+POST /gallery/upload
+
+---
+
+# Validation
+
+* Image Required
+* File Type Validation
+* File Size Validation
+* Server-side Validation
+
+---
+
+# Frontend Requirements
+
+* Masonry/Grid Layout
+* Responsive Design
+* Lazy Loading
+* Image Lightbox
+* Loading Skeleton
+* Empty State
+* Error Handling
+* Smooth Hover Effects
+* Scroll Animations
+
+---
+
+# Landing Page Behavior
+
+Load all gallery items dynamically from MongoDB.
+
+Display only active items.
+
+Sort by Display Order.
+
+Open images inside a professional lightbox.
+
+---
+
+# Acceptance Criteria
+
+The Gallery module should be fully manageable through the Dashboard and optimized for speed, responsiveness, and user experience.
+
+----------------------------------------
+
+# Prompt 8 — Contact Information & Inbox Module
+
+## Objective
+
+Develop a complete Contact System consisting of:
+
+1. Contact Information Section
+2. Contact Form
+3. Admin Inbox
+
+All contact information must be editable from the Dashboard.
+
+Every submitted message must automatically appear inside the Dashboard Inbox.
+
+---
+
+# Landing Page
+
+Create a professional section titled:
+
+## تواصل معنا
+
+Display:
+
+* Company Name
+* Address
+* Phone Number
+* WhatsApp Button
+* Email Address
+* Working Hours
+* Google Maps Location
+
+Include a modern Contact Form.
+
+---
+
+# Contact Form Fields
+
+Required Fields:
+
+* Full Name
+* Company Name (Optional)
+* Phone Number
+* Email Address
+* Subject
+* Message
+
+Buttons:
+
+* Send Message
+
+Validation:
+
+* Required Fields
+* Valid Email
+* Valid Phone Number
+* Loading State
+* Success Message
+* Error Message
+
+---
+
+# Backend Behavior
+
+When the user submits the form:
+
+* Validate the request.
+* Save the message to MongoDB.
+* Record:
+
+  * Sender Name
+  * Company Name
+  * Phone
+  * Email
+  * Subject
+  * Message
+  * Submission Date
+  * Submission Time
+  * Sender IP Address (if available)
+  * Browser/User Agent (optional)
+  * Read Status (default: Unread)
+
+Return a success response after saving.
+
+---
+
+# Dashboard
+
+Create two separate pages:
+
+## Contact Information
+
+Administrator can edit:
+
+* Company Name
+* Address
+* Phone Numbers
+* WhatsApp Number
+* Email
+* Working Hours
+* Google Maps URL
+* Social Media Links
+
+---
+
+## Inbox
+
+Create a professional Inbox similar to an email client.
+
+Display:
+
+* Sender Name
+* Company Name
+* Phone
+* Email
+* Subject
+* Date
+* Time
+* Read/Unread Status
+
+---
+
+# Inbox Features
+
+Administrator can:
+
+* Open Message
+* Read Full Message
+* Mark as Read
+* Mark as Unread
+* Delete Message
+* Search Messages
+* Filter by Read Status
+* Sort by Date
+* Pagination
+* Bulk Delete (Optional)
+* Bulk Mark as Read (Optional)
+
+Unread messages should be visually highlighted.
+
+---
+
+# Dashboard Home Integration
+
+Dashboard Home must display:
+
+* Total Messages
+* Total Unread Messages
+* Latest 5 Messages
+
+Show notification badge beside the Inbox menu if unread messages exist.
+
+---
+
+# MongoDB Collections
+
+contact_information
+
+Fields:
+
+* companyName
+* address
+* phone
+* whatsapp
+* email
+* workingHours
+* googleMaps
+* socialLinks
+* updatedAt
+
+---
+
+inbox_messages
+
+Fields:
+
+* fullName
+* companyName
+* phone
+* email
+* subject
+* message
+* ipAddress
+* userAgent
+* isRead
+* createdAt
+
+---
+
+# APIs
+
+## Contact Information
+
+GET /contact-information
+
+PUT /contact-information
+
+---
+
+## Contact Form
+
+POST /contact/send
+
+---
+
+## Inbox
+
+GET /inbox
+
+GET /inbox/:id
+
+PATCH /inbox/read/:id
+
+PATCH /inbox/unread/:id
+
+DELETE /inbox/:id
+
+---
+
+# Frontend Requirements
+
+* Responsive Contact Section
+* Embedded Google Map
+* WhatsApp CTA
+* Loading Spinner
+* Toast Notifications
+* Skeleton Loading
+* Error Handling
+* Mobile Friendly Design
+
+---
+
+# Acceptance Criteria
+
+The Contact module must provide visitors with an easy way to reach the company, while the Inbox acts as a lightweight CRM for managing incoming inquiries. All submitted messages must be stored securely, visible immediately in the Dashboard, and manageable through a clean and intuitive interface.
+
+-----------------------------------------------
+
+# Prompt 9 — Footer & Website Settings Module
+
+## Objective
+
+Develop a fully dynamic **Footer** and **Website Settings** module. Every piece of information displayed in the Footer and every global website setting must be managed through the Admin Dashboard.and in the end of the footer write developed by A Squared and make this sentence not be able to edit from the dashboard.
+
+---
+
+# Footer (Landing Page)
+
+Create a modern professional footer that matches the website design.
+
+The Footer should include:
+
+### Company Information
+
+* Company Logo
+* Company Name
+* Short Description
+
+---
+
+### Quick Links
+
+Dynamic navigation links to:
+
+* Home
+* About Us
+* Why Choose Us
+* Services
+* Applications
+* Products
+* Previous Projects
+* Contact Us
+
+Administrator should be able to enable or disable any link.
+
+---
+
+### Contact Information
+
+Display:
+
+* Address
+* Phone Number
+* WhatsApp
+* Email
+* Working Hours
+
+All data loaded dynamically from MongoDB.
+
+---
+
+### Social Media
+
+Display icons linking to:
+
+* Facebook
+* Instagram
+* LinkedIn
+* YouTube
+* X (Twitter)
+
+Administrator can:
+
+* Add
+* Edit
+* Delete
+* Enable / Disable
+
+---
+
+### Copyright
+
+Display:
+
+© Current Year S.M.G Turbo Fan Central Ventilation Systems.
+
+This text should also be editable from the Dashboard.
+
+---
+
+# Website Settings Module
+
+Create a dedicated **Website Settings** page inside the Dashboard.
+
+Administrator can manage:
+
+## General Information
+
+* Website Name
+* Website Title
+* Website Description
+* Company Logo
+* Favicon
+
+---
+
+## SEO Settings
+
+* Meta Title
+* Meta Description
+* Meta Keywords
+
+---
+
+## Contact Settings
+
+* Default Email
+* Default Phone Number
+* WhatsApp Number
+
+---
+
+## Social Media
+
+Editable URLs for:
+
+* Facebook
+* Instagram
+* LinkedIn
+* YouTube
+* X
+
+---
+
+## Analytics
+
+Administrator can add:
+
+* Google Analytics ID
+* Google Tag Manager ID
+* Facebook Pixel Code
+
+---
+
+## Theme Settings
+
+Allow administrator to change:
+
+* Primary Color
+* Secondary Color
+* Accent Color
+
+The Landing Page should automatically reflect these changes without code modifications.
+
+---
+
+# Dashboard Features
+
+Administrator can:
+
+* Edit
+* Save
+* Upload Logo
+* Upload Favicon
+* Preview Changes
+
+---
+
+# MongoDB Collections
+
+footer
+
+Fields:
+
+* companyDescription
+* copyright
+* quickLinks
+* socialLinks
+* updatedAt
+
+---
+
+website_settings
+
+Fields:
+
+* websiteName
+* websiteTitle
+* websiteDescription
+* logo
+* favicon
+* metaTitle
+* metaDescription
+* metaKeywords
+* analytics
+* theme
+* contactSettings
+* updatedAt
+
+---
+
+# APIs
+
+GET /footer
+
+PUT /footer
+
+GET /website-settings
+
+PUT /website-settings
+
+POST /website-settings/upload-logo
+
+POST /website-settings/upload-favicon
+
+---
+
+# Frontend Requirements
+
+* Responsive Footer
+* Lazy Loaded Logo
+* Dynamic Theme Support
+* Smooth Animations
+* Loading States
+* Error Handling
+
+---
+
+# Acceptance Criteria
+
+The Footer and Website Settings should be fully dynamic and manageable from the Dashboard. Changes must immediately appear across the website without requiring any frontend code modifications.
+
+-----------------------------------------------
+
+# Prompt 10 — Final Integration, Production Optimization & Deployment
+
+## Objective
+
+Integrate all developed modules into a single production-ready application with a scalable architecture, high performance, security, and maintainability.
+
+This prompt focuses on connecting every frontend and backend module, optimizing the application, and preparing it for deployment.
+
+---
+
+# Project Architecture
+
+The project consists of:
+
+* React Frontend
+* Node.js + Express Backend
+* MongoDB (Docker Image)
+* Nginx Reverse Proxy
+
+The frontend and backend should communicate exclusively through REST APIs.
+
+---
+
+# Frontend Integration
+
+Connect all Landing Page sections to the backend APIs:
+
+* Hero Section
+* About Us
+* Why Choose Us
+* Services
+* Applications
+* Products
+* Gallery
+* Contact
+* Footer
+
+Ensure all data is loaded dynamically.
+
+---
+
+# Dashboard Integration
+
+Connect every Dashboard module with its corresponding API.
+
+Modules include:
+
+* Authentication
+* Dashboard Home
+* About Us
+* Why Choose Us
+* Services
+* Applications
+* Products
+* Gallery
+* Contact Information
+* Inbox
+* Footer
+* Website Settings
+
+Implement complete CRUD functionality with optimistic UI updates where appropriate.
+
+---
+
+# Security
+
+Implement:
+
+* JWT Authentication
+* Protected Routes
+* Role-Based Access (Admin)
+* Secure Password Hashing (bcrypt)
+* CORS Configuration
+* Helmet
+* Rate Limiting
+* Input Validation
+* File Upload Validation
+* Secure Environment Variables
+
+---
+
+# Performance Optimization
+
+Frontend:
+
+* Code Splitting
+* Lazy Loading
+* Image Optimization
+* Asset Compression
+* Route-based Loading
+* Memoization where appropriate
+
+Backend:
+
+* Efficient MongoDB Queries
+* Pagination
+* Indexing
+* Proper Error Handling
+* Logging
+* Centralized Middleware
+
+---
+
+# SEO Optimization
+
+Implement:
+
+* Meta Tags
+* Open Graph Tags
+* Twitter Cards
+* Sitemap.xml
+* Robots.txt
+* Canonical URLs
+* Structured Data (JSON-LD)
+
+Ensure pages are optimized for search engines.
+
+---
+
+# Accessibility (A11Y)
+
+Follow WCAG best practices:
+
+* Semantic HTML
+* Keyboard Navigation
+* Accessible Forms
+* ARIA Labels
+* Sufficient Color Contrast
+* Focus States
+
+---
+
+# Responsive Design
+
+Ensure compatibility with:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile Devices
+
+Test all breakpoints and ensure smooth layouts.
+
+---
+
+# Error Handling
+
+Create dedicated pages for:
+
+* 404 Not Found
+* 500 Internal Server Error
+
+Provide user-friendly messages and navigation options.
+
+---
+
+# Logging & Monitoring
+
+Implement:
+
+* Backend Request Logging
+* Error Logging
+* API Response Logging (development mode)
+* Graceful Error Handling
+
+---
+
+# Docker Support
+
+Create Docker configuration for:
+
+* Frontend
+* Backend
+* MongoDB
+
+Provide a Docker Compose file to orchestrate all services.
+
+---
+
+# Nginx Configuration
+
+Configure Nginx to:
+
+* Serve the React frontend
+* Reverse proxy API requests to the backend
+* Enable Gzip compression
+* Cache static assets
+* Support HTTPS (ready for SSL certificates)
+
+---
+
+# Deployment Readiness
+
+Ensure the application is ready for deployment on a VPS.
+
+Recommended folder structure:
+
+* /frontend
+* /backend
+* /nginx
+* /docker
+
+Use environment variables for all configurable values.
+
+---
+
+# Testing Checklist
+
+Before considering the project complete:
+
+* All APIs tested
+* Authentication tested
+* CRUD operations tested
+* File uploads tested
+* Contact Form tested
+* Inbox tested
+* Responsive design verified
+* Cross-browser compatibility verified
+* Performance audited
+* SEO validated
+
+---
+
+# Final Acceptance Criteria
+
+The final deliverable must be a complete, production-ready full-stack web application with:
+
+* A modern, responsive React Landing Page
+* A secure Node.js/Express backend
+* MongoDB running in Docker
+* Nginx reverse proxy configuration
+* A fully functional Admin Dashboard
+* Dynamic content management across the entire website
+* Optimized performance, SEO, accessibility, and security
+* Clean, maintainable, and scalable architecture suitable for future enhancements and deployment.
+

@@ -1,0 +1,258 @@
+.about-section {
+  position: relative;
+  overflow: visible;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+/* ── Text Content ── */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  z-index: 2;
+}
+
+.about-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background: rgba(230, 0, 0, 0.08);
+  border: 1px solid rgba(230, 0, 0, 0.2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--accent-500);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  width: fit-content;
+}
+
+.about-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-500);
+  animation: pulse 2s ease infinite;
+}
+
+.about-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+}
+
+.about-title .text-accent { color: var(--accent-500); }
+
+.about-english-name {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--text-muted);
+  direction: ltr;
+  margin-top: -12px;
+}
+
+/* Tiptap rendered description */
+.tiptap-render {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: 1.8;
+}
+.tiptap-render p { margin-bottom: 0.75em; }
+.tiptap-render h2 {
+  font-size: var(--text-xl);
+  color: var(--text-primary);
+  font-weight: 700;
+  margin: 1.2em 0 0.4em;
+}
+
+.about-cta {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--accent-500), var(--accent-600));
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(230, 0, 0, 0.35);
+  transition: all var(--transition-base);
+}
+.about-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(230, 0, 0, 0.45);
+}
+
+/* ── Image Frame ── */
+.about-image-frame {
+  position: relative;
+  padding: var(--space-6);
+  z-index: 1;
+}
+
+/* Decorative corner accent lines instead of spinning ring */
+.about-image-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: calc(var(--radius-2xl) + 8px);
+  border: 2px solid transparent;
+  background:
+    linear-gradient(white, white) padding-box,
+    linear-gradient(135deg, var(--accent-500) 0%, transparent 40%, transparent 60%, var(--accent-500) 100%) border-box;
+  pointer-events: none;
+}
+
+/* Main image card - subtle float */
+.about-image-card {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(230, 0, 0, 0.08),
+    0 20px 60px rgba(0, 0, 0, 0.1),
+    0 8px 24px rgba(230, 0, 0, 0.08);
+  animation: card-float 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes card-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Red gradient banner at the top of the card */
+.about-image-banner {
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent-500), #ff4d4d, var(--accent-500));
+  background-size: 200% 100%;
+  animation: slide-gradient 3s ease infinite;
+}
+
+@keyframes slide-gradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Image display area - white background for logos */
+.about-image-display {
+  padding: var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  min-height: 280px;
+}
+
+.about-image {
+  max-width: 100%;
+  max-height: 280px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.6s ease;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.1));
+}
+
+.about-image-card:hover .about-image {
+  transform: scale(1.04);
+}
+
+/* Card footer with company name */
+.about-image-footer {
+  padding: var(--space-4) var(--space-6);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-image-footer-name {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+.about-image-footer-badge {
+  padding: 3px 10px;
+  background: rgba(230, 0, 0, 0.8);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Placeholder when no image */
+.about-image-placeholder-display {
+  padding: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: 280px;
+  background: linear-gradient(135deg, #f8f9fb 0%, #eef0f4 100%);
+}
+
+.about-image-placeholder-text {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--border-accent);
+  text-align: center;
+}
+
+/* Floating accent dots */
+.about-deco-dot {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.about-deco-dot-1 {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(230,0,0,0.12), transparent 70%);
+  top: -20px;
+  right: -20px;
+}
+.about-deco-dot-2 {
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, rgba(230,0,0,0.08), transparent 70%);
+  bottom: 20px;
+  left: 10px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+  .about-image-frame {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-title { font-size: var(--text-3xl); }
+  .tiptap-render { font-size: var(--text-sm); }
+  .about-image-display { min-height: 200px; padding: var(--space-6); }
+  .about-image { max-height: 200px; }
+}

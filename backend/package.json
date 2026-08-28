@@ -1,0 +1,15 @@
+{
+  "name": "smg-turbofan-backend",
+  "version": "1.0.0",
+  "description": "SMG Turbo Fan Central Ventilation Systems - Backend API",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "seed": "node src/utils/seeder.js"
+  },
+  "keywords": [],
+  "author": "SMG Turbo Fan",
+  "license": "ISC",
+  "type": "commonjs"
+}
