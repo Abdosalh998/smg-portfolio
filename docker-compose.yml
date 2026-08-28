@@ -25,8 +25,8 @@ services:
       - MAX_FILE_SIZE=5242880
       - FRONTEND_URL=https://portfolio.smgturbofan.com
     ports:
-      # Optional: expose 5000 to host for direct API access if needed
-      - "5001:5001"
+      # Expose container port 5000 to host port 5001
+      - "5001:5000"
     volumes:
       - smg_uploads:/app/uploads
     depends_on:
@@ -39,8 +39,8 @@ services:
       dockerfile: Dockerfile
     container_name: smg_frontend_web
     ports:
-      # Expose the 'serve' static server port to the host
-      - "3001:3001"
+      # Expose the 'serve' static server port 3000 to host port 3001
+      - "3001:3000"
     depends_on:
       - backend
     restart: unless-stopped
